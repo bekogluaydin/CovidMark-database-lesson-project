@@ -1,0 +1,1250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="covidmarkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="adres">
+          <Key>
+            <PropertyRef Name="adresID" />
+          </Key>
+          <Property Name="adresID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mahalleID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="altKategori">
+          <Key>
+            <PropertyRef Name="altkatID" />
+          </Key>
+          <Property Name="altkatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="katAltAd" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="alt_katKod" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bolge">
+          <Key>
+            <PropertyRef Name="bolgeID" />
+          </Key>
+          <Property Name="bolgeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ilceID" Type="int" Nullable="false" />
+          <Property Name="bolgeAd" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="fatura">
+          <Key>
+            <PropertyRef Name="faturaID" />
+          </Key>
+          <Property Name="faturaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="faturaTur" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="fatura_kesimTarih" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="firma">
+          <Key>
+            <PropertyRef Name="vergiNo" />
+          </Key>
+          <Property Name="firmaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vergiNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="firmaAd" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="firmaTel" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="firma_adresID" Type="int" Nullable="false" />
+          <Property Name="firma_adresBilgi" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hareket">
+          <Key>
+            <PropertyRef Name="hareketID" />
+          </Key>
+          <Property Name="hareketID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hareketBirim" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="hareketTuru" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="gelenAdet" Type="tinyint" Nullable="false" />
+          <Property Name="gidenAdet" Type="tinyint" Nullable="false" />
+          <Property Name="kalanAdet" Type="smallint" Nullable="false" />
+          <Property Name="hareketTarih" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ilce">
+          <Key>
+            <PropertyRef Name="ilceID" />
+          </Key>
+          <Property Name="ilceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sehirID" Type="int" Nullable="false" />
+          <Property Name="ilceAd" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="kategori">
+          <Key>
+            <PropertyRef Name="katKod" />
+          </Key>
+          <Property Name="katID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="katKod" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="katAd" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="katVergi" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mahalle">
+          <Key>
+            <PropertyRef Name="mahalleID" />
+          </Key>
+          <Property Name="mahalleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bolgeID" Type="int" Nullable="false" />
+          <Property Name="mahalleAd" Type="nvarchar" MaxLength="255" />
+          <Property Name="postaKod" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="personel">
+          <Key>
+            <PropertyRef Name="personelNo" />
+          </Key>
+          <Property Name="personelNo" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="personelAd" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="personelSoyAd" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="personelTC" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="personelSifre" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="personel_telefon" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="personelCinsiyet" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="personelGorev" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="personel_adresID" Type="int" Nullable="false" />
+          <Property Name="personel_adresBilgi" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sehir">
+          <Key>
+            <PropertyRef Name="sehirID" />
+          </Key>
+          <Property Name="sehirID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ulkeID" Type="int" Nullable="false" />
+          <Property Name="sehirAd" Type="nvarchar" MaxLength="255" />
+          <Property Name="plakaNo" Type="nvarchar" MaxLength="2" />
+          <Property Name="sehirTelKod" Type="nvarchar" MaxLength="7" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="ulke">
+          <Key>
+            <PropertyRef Name="ulkeID" />
+          </Key>
+          <Property Name="ulkeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ulkeKod" Type="nvarchar" MaxLength="2" />
+          <Property Name="ulkeAd" Type="nvarchar" MaxLength="255" />
+          <Property Name="ulkeTelKod" Type="nvarchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="urun">
+          <Key>
+            <PropertyRef Name="urunBarkod" />
+          </Key>
+          <Property Name="urunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="urunBarkod" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="urunKod" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="urunAd" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="urun_altkatID" Type="int" Nullable="false" />
+          <Property Name="urunBirim" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="urunStok" Type="smallint" Nullable="false" />
+          <Property Name="urunFiyat" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="urunOzellik" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="urunAlis">
+          <Key>
+            <PropertyRef Name="alisID" />
+          </Key>
+          <Property Name="alisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="alis_islemNo" Type="int" Nullable="false" />
+          <Property Name="alis_firmaVergiNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="alis_personelNo" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="alis_urunBarkod" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="alis_urunKod" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="alisBirim" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="alisAdet" Type="tinyint" Nullable="false" />
+          <Property Name="alisBirimFiyat" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="alisTopTutar" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="alisTarih" Type="datetime" Nullable="false" />
+          <Property Name="faturaId" Type="int" />
+        </EntityType>
+        <EntityType Name="urunSatis">
+          <Key>
+            <PropertyRef Name="satisID" />
+          </Key>
+          <Property Name="satisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="satis_islemNo" Type="int" Nullable="false" />
+          <Property Name="satis_personelNo" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="satis_urunBarkod" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="satis_urunKod" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="satisBirim" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="satisAdet" Type="tinyint" Nullable="false" />
+          <Property Name="satisBirimFiyat" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="satisTuru" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="satisTopTutar" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="satisTarih" Type="datetime" Nullable="false" />
+          <Property Name="faturaId" Type="int" />
+        </EntityType>
+        <Association Name="FK_adres_mahalleID">
+          <End Role="mahalle" Type="Self.mahalle" Multiplicity="1" />
+          <End Role="adres" Type="Self.adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mahalle">
+              <PropertyRef Name="mahalleID" />
+            </Principal>
+            <Dependent Role="adres">
+              <PropertyRef Name="mahalleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_altKategori_katKod">
+          <End Role="kategori" Type="Self.kategori" Multiplicity="1" />
+          <End Role="altKategori" Type="Self.altKategori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategori">
+              <PropertyRef Name="katKod" />
+            </Principal>
+            <Dependent Role="altKategori">
+              <PropertyRef Name="alt_katKod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bolge_ilceID">
+          <End Role="ilce" Type="Self.ilce" Multiplicity="1" />
+          <End Role="bolge" Type="Self.bolge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ilce">
+              <PropertyRef Name="ilceID" />
+            </Principal>
+            <Dependent Role="bolge">
+              <PropertyRef Name="ilceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_firma_adresID">
+          <End Role="adres" Type="Self.adres" Multiplicity="1" />
+          <End Role="firma" Type="Self.firma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adres">
+              <PropertyRef Name="adresID" />
+            </Principal>
+            <Dependent Role="firma">
+              <PropertyRef Name="firma_adresID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ilce_sehirID">
+          <End Role="sehir" Type="Self.sehir" Multiplicity="1" />
+          <End Role="ilce" Type="Self.ilce" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sehir">
+              <PropertyRef Name="sehirID" />
+            </Principal>
+            <Dependent Role="ilce">
+              <PropertyRef Name="sehirID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mahalle_bolgeID">
+          <End Role="bolge" Type="Self.bolge" Multiplicity="1" />
+          <End Role="mahalle" Type="Self.mahalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bolge">
+              <PropertyRef Name="bolgeID" />
+            </Principal>
+            <Dependent Role="mahalle">
+              <PropertyRef Name="bolgeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personel_adresID">
+          <End Role="adres" Type="Self.adres" Multiplicity="1" />
+          <End Role="personel" Type="Self.personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adres">
+              <PropertyRef Name="adresID" />
+            </Principal>
+            <Dependent Role="personel">
+              <PropertyRef Name="personel_adresID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sehir_ulkeID">
+          <End Role="ulke" Type="Self.ulke" Multiplicity="1" />
+          <End Role="sehir" Type="Self.sehir" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ulke">
+              <PropertyRef Name="ulkeID" />
+            </Principal>
+            <Dependent Role="sehir">
+              <PropertyRef Name="ulkeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urun_altKatID">
+          <End Role="altKategori" Type="Self.altKategori" Multiplicity="1" />
+          <End Role="urun" Type="Self.urun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="altKategori">
+              <PropertyRef Name="altkatID" />
+            </Principal>
+            <Dependent Role="urun">
+              <PropertyRef Name="urun_altkatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urunAlis_faturaId">
+          <End Role="fatura" Type="Self.fatura" Multiplicity="0..1" />
+          <End Role="urunAlis" Type="Self.urunAlis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fatura">
+              <PropertyRef Name="faturaID" />
+            </Principal>
+            <Dependent Role="urunAlis">
+              <PropertyRef Name="faturaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urunAlis_personelNo">
+          <End Role="personel" Type="Self.personel" Multiplicity="1" />
+          <End Role="urunAlis" Type="Self.urunAlis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="personelNo" />
+            </Principal>
+            <Dependent Role="urunAlis">
+              <PropertyRef Name="alis_personelNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urunAlis_urunBarkod">
+          <End Role="urun" Type="Self.urun" Multiplicity="1" />
+          <End Role="urunAlis" Type="Self.urunAlis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urun">
+              <PropertyRef Name="urunBarkod" />
+            </Principal>
+            <Dependent Role="urunAlis">
+              <PropertyRef Name="alis_urunBarkod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urunAlis_VergiNo">
+          <End Role="firma" Type="Self.firma" Multiplicity="1" />
+          <End Role="urunAlis" Type="Self.urunAlis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firma">
+              <PropertyRef Name="vergiNo" />
+            </Principal>
+            <Dependent Role="urunAlis">
+              <PropertyRef Name="alis_firmaVergiNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urunSatis_faturaId">
+          <End Role="fatura" Type="Self.fatura" Multiplicity="0..1" />
+          <End Role="urunSatis" Type="Self.urunSatis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fatura">
+              <PropertyRef Name="faturaID" />
+            </Principal>
+            <Dependent Role="urunSatis">
+              <PropertyRef Name="faturaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urunSatis_personelNo">
+          <End Role="personel" Type="Self.personel" Multiplicity="1" />
+          <End Role="urunSatis" Type="Self.urunSatis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="personelNo" />
+            </Principal>
+            <Dependent Role="urunSatis">
+              <PropertyRef Name="satis_personelNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urunSatis_urunBarkod">
+          <End Role="urun" Type="Self.urun" Multiplicity="1" />
+          <End Role="urunSatis" Type="Self.urunSatis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urun">
+              <PropertyRef Name="urunBarkod" />
+            </Principal>
+            <Dependent Role="urunSatis">
+              <PropertyRef Name="satis_urunBarkod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="covidmarkModelStoreContainer">
+          <EntitySet Name="adres" EntityType="Self.adres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="altKategori" EntityType="Self.altKategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bolge" EntityType="Self.bolge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fatura" EntityType="Self.fatura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="firma" EntityType="Self.firma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hareket" EntityType="Self.hareket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ilce" EntityType="Self.ilce" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kategori" EntityType="Self.kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mahalle" EntityType="Self.mahalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="personel" EntityType="Self.personel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sehir" EntityType="Self.sehir" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ulke" EntityType="Self.ulke" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="urun" EntityType="Self.urun" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="urunAlis" EntityType="Self.urunAlis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="urunSatis" EntityType="Self.urunSatis" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_adres_mahalleID" Association="Self.FK_adres_mahalleID">
+            <End Role="mahalle" EntitySet="mahalle" />
+            <End Role="adres" EntitySet="adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_altKategori_katKod" Association="Self.FK_altKategori_katKod">
+            <End Role="kategori" EntitySet="kategori" />
+            <End Role="altKategori" EntitySet="altKategori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bolge_ilceID" Association="Self.FK_bolge_ilceID">
+            <End Role="ilce" EntitySet="ilce" />
+            <End Role="bolge" EntitySet="bolge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_firma_adresID" Association="Self.FK_firma_adresID">
+            <End Role="adres" EntitySet="adres" />
+            <End Role="firma" EntitySet="firma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ilce_sehirID" Association="Self.FK_ilce_sehirID">
+            <End Role="sehir" EntitySet="sehir" />
+            <End Role="ilce" EntitySet="ilce" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mahalle_bolgeID" Association="Self.FK_mahalle_bolgeID">
+            <End Role="bolge" EntitySet="bolge" />
+            <End Role="mahalle" EntitySet="mahalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personel_adresID" Association="Self.FK_personel_adresID">
+            <End Role="adres" EntitySet="adres" />
+            <End Role="personel" EntitySet="personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sehir_ulkeID" Association="Self.FK_sehir_ulkeID">
+            <End Role="ulke" EntitySet="ulke" />
+            <End Role="sehir" EntitySet="sehir" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urun_altKatID" Association="Self.FK_urun_altKatID">
+            <End Role="altKategori" EntitySet="altKategori" />
+            <End Role="urun" EntitySet="urun" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urunAlis_faturaId" Association="Self.FK_urunAlis_faturaId">
+            <End Role="fatura" EntitySet="fatura" />
+            <End Role="urunAlis" EntitySet="urunAlis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urunAlis_personelNo" Association="Self.FK_urunAlis_personelNo">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="urunAlis" EntitySet="urunAlis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urunAlis_urunBarkod" Association="Self.FK_urunAlis_urunBarkod">
+            <End Role="urun" EntitySet="urun" />
+            <End Role="urunAlis" EntitySet="urunAlis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urunAlis_VergiNo" Association="Self.FK_urunAlis_VergiNo">
+            <End Role="firma" EntitySet="firma" />
+            <End Role="urunAlis" EntitySet="urunAlis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urunSatis_faturaId" Association="Self.FK_urunSatis_faturaId">
+            <End Role="fatura" EntitySet="fatura" />
+            <End Role="urunSatis" EntitySet="urunSatis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urunSatis_personelNo" Association="Self.FK_urunSatis_personelNo">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="urunSatis" EntitySet="urunSatis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urunSatis_urunBarkod" Association="Self.FK_urunSatis_urunBarkod">
+            <End Role="urun" EntitySet="urun" />
+            <End Role="urunSatis" EntitySet="urunSatis" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="covidmarkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="adres">
+          <Key>
+            <PropertyRef Name="adresID" />
+          </Key>
+          <Property Name="adresID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mahalleID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mahalle" Relationship="Self.FK_adres_mahalleID" FromRole="adres" ToRole="mahalle" />
+          <NavigationProperty Name="firma" Relationship="Self.FK_firma_adresID" FromRole="adres" ToRole="firma" />
+          <NavigationProperty Name="personel" Relationship="Self.FK_personel_adresID" FromRole="adres" ToRole="personel" />
+        </EntityType>
+        <EntityType Name="altKategori">
+          <Key>
+            <PropertyRef Name="altkatID" />
+          </Key>
+          <Property Name="altkatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="katAltAd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="alt_katKod" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="kategori" Relationship="Self.FK_altKategori_katKod" FromRole="altKategori" ToRole="kategori" />
+          <NavigationProperty Name="urun" Relationship="Self.FK_urun_altKatID" FromRole="altKategori" ToRole="urun" />
+        </EntityType>
+        <EntityType Name="bolge">
+          <Key>
+            <PropertyRef Name="bolgeID" />
+          </Key>
+          <Property Name="bolgeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ilceID" Type="Int32" Nullable="false" />
+          <Property Name="bolgeAd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ilce" Relationship="Self.FK_bolge_ilceID" FromRole="bolge" ToRole="ilce" />
+          <NavigationProperty Name="mahalle" Relationship="Self.FK_mahalle_bolgeID" FromRole="bolge" ToRole="mahalle" />
+        </EntityType>
+        <EntityType Name="fatura">
+          <Key>
+            <PropertyRef Name="faturaID" />
+          </Key>
+          <Property Name="faturaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="faturaTur" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fatura_kesimTarih" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="urunAlis" Relationship="Self.FK_urunAlis_faturaId" FromRole="fatura" ToRole="urunAlis" />
+          <NavigationProperty Name="urunSatis" Relationship="Self.FK_urunSatis_faturaId" FromRole="fatura" ToRole="urunSatis" />
+        </EntityType>
+        <EntityType Name="firma">
+          <Key>
+            <PropertyRef Name="vergiNo" />
+          </Key>
+          <Property Name="firmaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vergiNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="firmaAd" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="firmaTel" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="firma_adresID" Type="Int32" Nullable="false" />
+          <Property Name="firma_adresBilgi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="adres" Relationship="Self.FK_firma_adresID" FromRole="firma" ToRole="adres" />
+          <NavigationProperty Name="urunAlis" Relationship="Self.FK_urunAlis_VergiNo" FromRole="firma" ToRole="urunAlis" />
+        </EntityType>
+        <EntityType Name="hareket">
+          <Key>
+            <PropertyRef Name="hareketID" />
+          </Key>
+          <Property Name="hareketID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hareketBirim" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hareketTuru" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="gelenAdet" Type="Byte" Nullable="false" />
+          <Property Name="gidenAdet" Type="Byte" Nullable="false" />
+          <Property Name="kalanAdet" Type="Int16" Nullable="false" />
+          <Property Name="hareketTarih" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ilce">
+          <Key>
+            <PropertyRef Name="ilceID" />
+          </Key>
+          <Property Name="ilceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sehirID" Type="Int32" Nullable="false" />
+          <Property Name="ilceAd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="bolge" Relationship="Self.FK_bolge_ilceID" FromRole="ilce" ToRole="bolge" />
+          <NavigationProperty Name="sehir" Relationship="Self.FK_ilce_sehirID" FromRole="ilce" ToRole="sehir" />
+        </EntityType>
+        <EntityType Name="kategori">
+          <Key>
+            <PropertyRef Name="katKod" />
+          </Key>
+          <Property Name="katID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="katKod" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="katAd" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="katVergi" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="altKategori" Relationship="Self.FK_altKategori_katKod" FromRole="kategori" ToRole="altKategori" />
+        </EntityType>
+        <EntityType Name="mahalle">
+          <Key>
+            <PropertyRef Name="mahalleID" />
+          </Key>
+          <Property Name="mahalleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bolgeID" Type="Int32" Nullable="false" />
+          <Property Name="mahalleAd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="postaKod" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="adres" Relationship="Self.FK_adres_mahalleID" FromRole="mahalle" ToRole="adres" />
+          <NavigationProperty Name="bolge" Relationship="Self.FK_mahalle_bolgeID" FromRole="mahalle" ToRole="bolge" />
+        </EntityType>
+        <EntityType Name="personel">
+          <Key>
+            <PropertyRef Name="personelNo" />
+          </Key>
+          <Property Name="personelNo" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="personelAd" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="personelSoyAd" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="personelTC" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="personelSifre" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="personel_telefon" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="personelCinsiyet" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="personelGorev" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="personel_adresID" Type="Int32" Nullable="false" />
+          <Property Name="personel_adresBilgi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="adres" Relationship="Self.FK_personel_adresID" FromRole="personel" ToRole="adres" />
+          <NavigationProperty Name="urunAlis" Relationship="Self.FK_urunAlis_personelNo" FromRole="personel" ToRole="urunAlis" />
+          <NavigationProperty Name="urunSatis" Relationship="Self.FK_urunSatis_personelNo" FromRole="personel" ToRole="urunSatis" />
+        </EntityType>
+        <EntityType Name="sehir">
+          <Key>
+            <PropertyRef Name="sehirID" />
+          </Key>
+          <Property Name="sehirID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ulkeID" Type="Int32" Nullable="false" />
+          <Property Name="sehirAd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="plakaNo" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="sehirTelKod" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ilce" Relationship="Self.FK_ilce_sehirID" FromRole="sehir" ToRole="ilce" />
+          <NavigationProperty Name="ulke" Relationship="Self.FK_sehir_ulkeID" FromRole="sehir" ToRole="ulke" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ulke">
+          <Key>
+            <PropertyRef Name="ulkeID" />
+          </Key>
+          <Property Name="ulkeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ulkeKod" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="ulkeAd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ulkeTelKod" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="sehir" Relationship="Self.FK_sehir_ulkeID" FromRole="ulke" ToRole="sehir" />
+        </EntityType>
+        <EntityType Name="urun">
+          <Key>
+            <PropertyRef Name="urunBarkod" />
+          </Key>
+          <Property Name="urunID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="urunBarkod" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="urunKod" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="urunAd" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="urun_altkatID" Type="Int32" Nullable="false" />
+          <Property Name="urunBirim" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="urunStok" Type="Int16" Nullable="false" />
+          <Property Name="urunFiyat" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="urunOzellik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="altKategori" Relationship="Self.FK_urun_altKatID" FromRole="urun" ToRole="altKategori" />
+          <NavigationProperty Name="urunAlis" Relationship="Self.FK_urunAlis_urunBarkod" FromRole="urun" ToRole="urunAlis" />
+          <NavigationProperty Name="urunSatis" Relationship="Self.FK_urunSatis_urunBarkod" FromRole="urun" ToRole="urunSatis" />
+        </EntityType>
+        <EntityType Name="urunAlis">
+          <Key>
+            <PropertyRef Name="alisID" />
+          </Key>
+          <Property Name="alisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="alis_islemNo" Type="Int32" Nullable="false" />
+          <Property Name="alis_firmaVergiNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="alis_personelNo" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="alis_urunBarkod" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="alis_urunKod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="alisBirim" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="alisAdet" Type="Byte" Nullable="false" />
+          <Property Name="alisBirimFiyat" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="alisTopTutar" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="alisTarih" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="faturaId" Type="Int32" />
+          <NavigationProperty Name="fatura" Relationship="Self.FK_urunAlis_faturaId" FromRole="urunAlis" ToRole="fatura" />
+          <NavigationProperty Name="firma" Relationship="Self.FK_urunAlis_VergiNo" FromRole="urunAlis" ToRole="firma" />
+          <NavigationProperty Name="personel" Relationship="Self.FK_urunAlis_personelNo" FromRole="urunAlis" ToRole="personel" />
+          <NavigationProperty Name="urun" Relationship="Self.FK_urunAlis_urunBarkod" FromRole="urunAlis" ToRole="urun" />
+        </EntityType>
+        <EntityType Name="urunSatis">
+          <Key>
+            <PropertyRef Name="satisID" />
+          </Key>
+          <Property Name="satisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="satis_islemNo" Type="Int32" Nullable="false" />
+          <Property Name="satis_personelNo" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="satis_urunBarkod" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="satis_urunKod" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="satisBirim" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="satisAdet" Type="Byte" Nullable="false" />
+          <Property Name="satisBirimFiyat" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="satisTuru" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="satisTopTutar" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="satisTarih" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="faturaId" Type="Int32" />
+          <NavigationProperty Name="fatura" Relationship="Self.FK_urunSatis_faturaId" FromRole="urunSatis" ToRole="fatura" />
+          <NavigationProperty Name="personel" Relationship="Self.FK_urunSatis_personelNo" FromRole="urunSatis" ToRole="personel" />
+          <NavigationProperty Name="urun" Relationship="Self.FK_urunSatis_urunBarkod" FromRole="urunSatis" ToRole="urun" />
+        </EntityType>
+        <Association Name="FK_adres_mahalleID">
+          <End Role="mahalle" Type="Self.mahalle" Multiplicity="1" />
+          <End Role="adres" Type="Self.adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mahalle">
+              <PropertyRef Name="mahalleID" />
+            </Principal>
+            <Dependent Role="adres">
+              <PropertyRef Name="mahalleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_firma_adresID">
+          <End Role="adres" Type="Self.adres" Multiplicity="1" />
+          <End Role="firma" Type="Self.firma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adres">
+              <PropertyRef Name="adresID" />
+            </Principal>
+            <Dependent Role="firma">
+              <PropertyRef Name="firma_adresID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personel_adresID">
+          <End Role="adres" Type="Self.adres" Multiplicity="1" />
+          <End Role="personel" Type="Self.personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adres">
+              <PropertyRef Name="adresID" />
+            </Principal>
+            <Dependent Role="personel">
+              <PropertyRef Name="personel_adresID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_altKategori_katKod">
+          <End Role="kategori" Type="Self.kategori" Multiplicity="1" />
+          <End Role="altKategori" Type="Self.altKategori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategori">
+              <PropertyRef Name="katKod" />
+            </Principal>
+            <Dependent Role="altKategori">
+              <PropertyRef Name="alt_katKod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urun_altKatID">
+          <End Role="altKategori" Type="Self.altKategori" Multiplicity="1" />
+          <End Role="urun" Type="Self.urun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="altKategori">
+              <PropertyRef Name="altkatID" />
+            </Principal>
+            <Dependent Role="urun">
+              <PropertyRef Name="urun_altkatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bolge_ilceID">
+          <End Role="ilce" Type="Self.ilce" Multiplicity="1" />
+          <End Role="bolge" Type="Self.bolge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ilce">
+              <PropertyRef Name="ilceID" />
+            </Principal>
+            <Dependent Role="bolge">
+              <PropertyRef Name="ilceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mahalle_bolgeID">
+          <End Role="bolge" Type="Self.bolge" Multiplicity="1" />
+          <End Role="mahalle" Type="Self.mahalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bolge">
+              <PropertyRef Name="bolgeID" />
+            </Principal>
+            <Dependent Role="mahalle">
+              <PropertyRef Name="bolgeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urunAlis_faturaId">
+          <End Role="fatura" Type="Self.fatura" Multiplicity="0..1" />
+          <End Role="urunAlis" Type="Self.urunAlis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fatura">
+              <PropertyRef Name="faturaID" />
+            </Principal>
+            <Dependent Role="urunAlis">
+              <PropertyRef Name="faturaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urunSatis_faturaId">
+          <End Role="fatura" Type="Self.fatura" Multiplicity="0..1" />
+          <End Role="urunSatis" Type="Self.urunSatis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fatura">
+              <PropertyRef Name="faturaID" />
+            </Principal>
+            <Dependent Role="urunSatis">
+              <PropertyRef Name="faturaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urunAlis_VergiNo">
+          <End Role="firma" Type="Self.firma" Multiplicity="1" />
+          <End Role="urunAlis" Type="Self.urunAlis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firma">
+              <PropertyRef Name="vergiNo" />
+            </Principal>
+            <Dependent Role="urunAlis">
+              <PropertyRef Name="alis_firmaVergiNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ilce_sehirID">
+          <End Role="sehir" Type="Self.sehir" Multiplicity="1" />
+          <End Role="ilce" Type="Self.ilce" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sehir">
+              <PropertyRef Name="sehirID" />
+            </Principal>
+            <Dependent Role="ilce">
+              <PropertyRef Name="sehirID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urunAlis_personelNo">
+          <End Role="personel" Type="Self.personel" Multiplicity="1" />
+          <End Role="urunAlis" Type="Self.urunAlis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="personelNo" />
+            </Principal>
+            <Dependent Role="urunAlis">
+              <PropertyRef Name="alis_personelNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urunSatis_personelNo">
+          <End Role="personel" Type="Self.personel" Multiplicity="1" />
+          <End Role="urunSatis" Type="Self.urunSatis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel">
+              <PropertyRef Name="personelNo" />
+            </Principal>
+            <Dependent Role="urunSatis">
+              <PropertyRef Name="satis_personelNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sehir_ulkeID">
+          <End Role="ulke" Type="Self.ulke" Multiplicity="1" />
+          <End Role="sehir" Type="Self.sehir" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ulke">
+              <PropertyRef Name="ulkeID" />
+            </Principal>
+            <Dependent Role="sehir">
+              <PropertyRef Name="ulkeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urunAlis_urunBarkod">
+          <End Role="urun" Type="Self.urun" Multiplicity="1" />
+          <End Role="urunAlis" Type="Self.urunAlis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urun">
+              <PropertyRef Name="urunBarkod" />
+            </Principal>
+            <Dependent Role="urunAlis">
+              <PropertyRef Name="alis_urunBarkod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_urunSatis_urunBarkod">
+          <End Role="urun" Type="Self.urun" Multiplicity="1" />
+          <End Role="urunSatis" Type="Self.urunSatis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="urun">
+              <PropertyRef Name="urunBarkod" />
+            </Principal>
+            <Dependent Role="urunSatis">
+              <PropertyRef Name="satis_urunBarkod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="covidmarkEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="adres" EntityType="Self.adres" />
+          <EntitySet Name="altKategori" EntityType="Self.altKategori" />
+          <EntitySet Name="bolge" EntityType="Self.bolge" />
+          <EntitySet Name="fatura" EntityType="Self.fatura" />
+          <EntitySet Name="firma" EntityType="Self.firma" />
+          <EntitySet Name="hareket" EntityType="Self.hareket" />
+          <EntitySet Name="ilce" EntityType="Self.ilce" />
+          <EntitySet Name="kategori" EntityType="Self.kategori" />
+          <EntitySet Name="mahalle" EntityType="Self.mahalle" />
+          <EntitySet Name="personel" EntityType="Self.personel" />
+          <EntitySet Name="sehir" EntityType="Self.sehir" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="ulke" EntityType="Self.ulke" />
+          <EntitySet Name="urun" EntityType="Self.urun" />
+          <EntitySet Name="urunAlis" EntityType="Self.urunAlis" />
+          <EntitySet Name="urunSatis" EntityType="Self.urunSatis" />
+          <AssociationSet Name="FK_adres_mahalleID" Association="Self.FK_adres_mahalleID">
+            <End Role="mahalle" EntitySet="mahalle" />
+            <End Role="adres" EntitySet="adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_firma_adresID" Association="Self.FK_firma_adresID">
+            <End Role="adres" EntitySet="adres" />
+            <End Role="firma" EntitySet="firma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personel_adresID" Association="Self.FK_personel_adresID">
+            <End Role="adres" EntitySet="adres" />
+            <End Role="personel" EntitySet="personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_altKategori_katKod" Association="Self.FK_altKategori_katKod">
+            <End Role="kategori" EntitySet="kategori" />
+            <End Role="altKategori" EntitySet="altKategori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urun_altKatID" Association="Self.FK_urun_altKatID">
+            <End Role="altKategori" EntitySet="altKategori" />
+            <End Role="urun" EntitySet="urun" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bolge_ilceID" Association="Self.FK_bolge_ilceID">
+            <End Role="ilce" EntitySet="ilce" />
+            <End Role="bolge" EntitySet="bolge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mahalle_bolgeID" Association="Self.FK_mahalle_bolgeID">
+            <End Role="bolge" EntitySet="bolge" />
+            <End Role="mahalle" EntitySet="mahalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urunAlis_faturaId" Association="Self.FK_urunAlis_faturaId">
+            <End Role="fatura" EntitySet="fatura" />
+            <End Role="urunAlis" EntitySet="urunAlis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urunSatis_faturaId" Association="Self.FK_urunSatis_faturaId">
+            <End Role="fatura" EntitySet="fatura" />
+            <End Role="urunSatis" EntitySet="urunSatis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urunAlis_VergiNo" Association="Self.FK_urunAlis_VergiNo">
+            <End Role="firma" EntitySet="firma" />
+            <End Role="urunAlis" EntitySet="urunAlis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ilce_sehirID" Association="Self.FK_ilce_sehirID">
+            <End Role="sehir" EntitySet="sehir" />
+            <End Role="ilce" EntitySet="ilce" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urunAlis_personelNo" Association="Self.FK_urunAlis_personelNo">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="urunAlis" EntitySet="urunAlis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urunSatis_personelNo" Association="Self.FK_urunSatis_personelNo">
+            <End Role="personel" EntitySet="personel" />
+            <End Role="urunSatis" EntitySet="urunSatis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sehir_ulkeID" Association="Self.FK_sehir_ulkeID">
+            <End Role="ulke" EntitySet="ulke" />
+            <End Role="sehir" EntitySet="sehir" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urunAlis_urunBarkod" Association="Self.FK_urunAlis_urunBarkod">
+            <End Role="urun" EntitySet="urun" />
+            <End Role="urunAlis" EntitySet="urunAlis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_urunSatis_urunBarkod" Association="Self.FK_urunSatis_urunBarkod">
+            <End Role="urun" EntitySet="urun" />
+            <End Role="urunSatis" EntitySet="urunSatis" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(covidmarkModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(covidmarkModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="covidmarkModelStoreContainer" CdmEntityContainer="covidmarkEntities">
+          <EntitySetMapping Name="adres">
+            <EntityTypeMapping TypeName="covidmarkModel.adres">
+              <MappingFragment StoreEntitySet="adres">
+                <ScalarProperty Name="adresID" ColumnName="adresID" />
+                <ScalarProperty Name="mahalleID" ColumnName="mahalleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="altKategori">
+            <EntityTypeMapping TypeName="covidmarkModel.altKategori">
+              <MappingFragment StoreEntitySet="altKategori">
+                <ScalarProperty Name="altkatID" ColumnName="altkatID" />
+                <ScalarProperty Name="katAltAd" ColumnName="katAltAd" />
+                <ScalarProperty Name="alt_katKod" ColumnName="alt_katKod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bolge">
+            <EntityTypeMapping TypeName="covidmarkModel.bolge">
+              <MappingFragment StoreEntitySet="bolge">
+                <ScalarProperty Name="bolgeID" ColumnName="bolgeID" />
+                <ScalarProperty Name="ilceID" ColumnName="ilceID" />
+                <ScalarProperty Name="bolgeAd" ColumnName="bolgeAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fatura">
+            <EntityTypeMapping TypeName="covidmarkModel.fatura">
+              <MappingFragment StoreEntitySet="fatura">
+                <ScalarProperty Name="faturaID" ColumnName="faturaID" />
+                <ScalarProperty Name="faturaTur" ColumnName="faturaTur" />
+                <ScalarProperty Name="fatura_kesimTarih" ColumnName="fatura_kesimTarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="firma">
+            <EntityTypeMapping TypeName="covidmarkModel.firma">
+              <MappingFragment StoreEntitySet="firma">
+                <ScalarProperty Name="firmaID" ColumnName="firmaID" />
+                <ScalarProperty Name="vergiNo" ColumnName="vergiNo" />
+                <ScalarProperty Name="firmaAd" ColumnName="firmaAd" />
+                <ScalarProperty Name="firmaTel" ColumnName="firmaTel" />
+                <ScalarProperty Name="firma_adresID" ColumnName="firma_adresID" />
+                <ScalarProperty Name="firma_adresBilgi" ColumnName="firma_adresBilgi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hareket">
+            <EntityTypeMapping TypeName="covidmarkModel.hareket">
+              <MappingFragment StoreEntitySet="hareket">
+                <ScalarProperty Name="hareketID" ColumnName="hareketID" />
+                <ScalarProperty Name="hareketBirim" ColumnName="hareketBirim" />
+                <ScalarProperty Name="hareketTuru" ColumnName="hareketTuru" />
+                <ScalarProperty Name="gelenAdet" ColumnName="gelenAdet" />
+                <ScalarProperty Name="gidenAdet" ColumnName="gidenAdet" />
+                <ScalarProperty Name="kalanAdet" ColumnName="kalanAdet" />
+                <ScalarProperty Name="hareketTarih" ColumnName="hareketTarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ilce">
+            <EntityTypeMapping TypeName="covidmarkModel.ilce">
+              <MappingFragment StoreEntitySet="ilce">
+                <ScalarProperty Name="ilceID" ColumnName="ilceID" />
+                <ScalarProperty Name="sehirID" ColumnName="sehirID" />
+                <ScalarProperty Name="ilceAd" ColumnName="ilceAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kategori">
+            <EntityTypeMapping TypeName="covidmarkModel.kategori">
+              <MappingFragment StoreEntitySet="kategori">
+                <ScalarProperty Name="katID" ColumnName="katID" />
+                <ScalarProperty Name="katKod" ColumnName="katKod" />
+                <ScalarProperty Name="katAd" ColumnName="katAd" />
+                <ScalarProperty Name="katVergi" ColumnName="katVergi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mahalle">
+            <EntityTypeMapping TypeName="covidmarkModel.mahalle">
+              <MappingFragment StoreEntitySet="mahalle">
+                <ScalarProperty Name="mahalleID" ColumnName="mahalleID" />
+                <ScalarProperty Name="bolgeID" ColumnName="bolgeID" />
+                <ScalarProperty Name="mahalleAd" ColumnName="mahalleAd" />
+                <ScalarProperty Name="postaKod" ColumnName="postaKod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personel">
+            <EntityTypeMapping TypeName="covidmarkModel.personel">
+              <MappingFragment StoreEntitySet="personel">
+                <ScalarProperty Name="personelNo" ColumnName="personelNo" />
+                <ScalarProperty Name="personelAd" ColumnName="personelAd" />
+                <ScalarProperty Name="personelSoyAd" ColumnName="personelSoyAd" />
+                <ScalarProperty Name="personelTC" ColumnName="personelTC" />
+                <ScalarProperty Name="personelSifre" ColumnName="personelSifre" />
+                <ScalarProperty Name="personel_telefon" ColumnName="personel_telefon" />
+                <ScalarProperty Name="personelCinsiyet" ColumnName="personelCinsiyet" />
+                <ScalarProperty Name="personelGorev" ColumnName="personelGorev" />
+                <ScalarProperty Name="personel_adresID" ColumnName="personel_adresID" />
+                <ScalarProperty Name="personel_adresBilgi" ColumnName="personel_adresBilgi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sehir">
+            <EntityTypeMapping TypeName="covidmarkModel.sehir">
+              <MappingFragment StoreEntitySet="sehir">
+                <ScalarProperty Name="sehirID" ColumnName="sehirID" />
+                <ScalarProperty Name="ulkeID" ColumnName="ulkeID" />
+                <ScalarProperty Name="sehirAd" ColumnName="sehirAd" />
+                <ScalarProperty Name="plakaNo" ColumnName="plakaNo" />
+                <ScalarProperty Name="sehirTelKod" ColumnName="sehirTelKod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="covidmarkModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ulke">
+            <EntityTypeMapping TypeName="covidmarkModel.ulke">
+              <MappingFragment StoreEntitySet="ulke">
+                <ScalarProperty Name="ulkeID" ColumnName="ulkeID" />
+                <ScalarProperty Name="ulkeKod" ColumnName="ulkeKod" />
+                <ScalarProperty Name="ulkeAd" ColumnName="ulkeAd" />
+                <ScalarProperty Name="ulkeTelKod" ColumnName="ulkeTelKod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="urun">
+            <EntityTypeMapping TypeName="covidmarkModel.urun">
+              <MappingFragment StoreEntitySet="urun">
+                <ScalarProperty Name="urunID" ColumnName="urunID" />
+                <ScalarProperty Name="urunBarkod" ColumnName="urunBarkod" />
+                <ScalarProperty Name="urunKod" ColumnName="urunKod" />
+                <ScalarProperty Name="urunAd" ColumnName="urunAd" />
+                <ScalarProperty Name="urun_altkatID" ColumnName="urun_altkatID" />
+                <ScalarProperty Name="urunBirim" ColumnName="urunBirim" />
+                <ScalarProperty Name="urunStok" ColumnName="urunStok" />
+                <ScalarProperty Name="urunFiyat" ColumnName="urunFiyat" />
+                <ScalarProperty Name="urunOzellik" ColumnName="urunOzellik" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="urunAlis">
+            <EntityTypeMapping TypeName="covidmarkModel.urunAlis">
+              <MappingFragment StoreEntitySet="urunAlis">
+                <ScalarProperty Name="alisID" ColumnName="alisID" />
+                <ScalarProperty Name="alis_islemNo" ColumnName="alis_islemNo" />
+                <ScalarProperty Name="alis_firmaVergiNo" ColumnName="alis_firmaVergiNo" />
+                <ScalarProperty Name="alis_personelNo" ColumnName="alis_personelNo" />
+                <ScalarProperty Name="alis_urunBarkod" ColumnName="alis_urunBarkod" />
+                <ScalarProperty Name="alis_urunKod" ColumnName="alis_urunKod" />
+                <ScalarProperty Name="alisBirim" ColumnName="alisBirim" />
+                <ScalarProperty Name="alisAdet" ColumnName="alisAdet" />
+                <ScalarProperty Name="alisBirimFiyat" ColumnName="alisBirimFiyat" />
+                <ScalarProperty Name="alisTopTutar" ColumnName="alisTopTutar" />
+                <ScalarProperty Name="alisTarih" ColumnName="alisTarih" />
+                <ScalarProperty Name="faturaId" ColumnName="faturaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="urunSatis">
+            <EntityTypeMapping TypeName="covidmarkModel.urunSatis">
+              <MappingFragment StoreEntitySet="urunSatis">
+                <ScalarProperty Name="satisID" ColumnName="satisID" />
+                <ScalarProperty Name="satis_islemNo" ColumnName="satis_islemNo" />
+                <ScalarProperty Name="satis_personelNo" ColumnName="satis_personelNo" />
+                <ScalarProperty Name="satis_urunBarkod" ColumnName="satis_urunBarkod" />
+                <ScalarProperty Name="satis_urunKod" ColumnName="satis_urunKod" />
+                <ScalarProperty Name="satisBirim" ColumnName="satisBirim" />
+                <ScalarProperty Name="satisAdet" ColumnName="satisAdet" />
+                <ScalarProperty Name="satisBirimFiyat" ColumnName="satisBirimFiyat" />
+                <ScalarProperty Name="satisTuru" ColumnName="satisTuru" />
+                <ScalarProperty Name="satisTopTutar" ColumnName="satisTopTutar" />
+                <ScalarProperty Name="satisTarih" ColumnName="satisTarih" />
+                <ScalarProperty Name="faturaId" ColumnName="faturaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="covidmarkModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="covidmarkModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="covidmarkModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="covidmarkModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="covidmarkModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="covidmarkModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="covidmarkModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="covidmarkModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="covidmarkModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

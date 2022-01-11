@@ -1,0 +1,450 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="covidmarkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="adres">
+          <Key>
+            <PropertyRef Name="adresID" />
+          </Key>
+          <Property Name="adresID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="postaKod" Type="int" Nullable="false" />
+          <Property Name="il" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="ilce" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="firma">
+          <Key>
+            <PropertyRef Name="firmaID" />
+          </Key>
+          <Property Name="firmaID" Type="int" Nullable="false" />
+          <Property Name="vergiNo" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="firmaAd" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="firmaTel" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="firma_adresID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hareket">
+          <Key>
+            <PropertyRef Name="hareketID" />
+          </Key>
+          <Property Name="hareketID" Type="int" Nullable="false" />
+          <Property Name="hareketBirim" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="gelenAdet" Type="tinyint" Nullable="false" />
+          <Property Name="gidenAdet" Type="tinyint" Nullable="false" />
+          <Property Name="kalanAdet" Type="smallint" Nullable="false" />
+          <Property Name="hareketTarih" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="kategori">
+          <Key>
+            <PropertyRef Name="katID" />
+          </Key>
+          <Property Name="katID" Type="int" Nullable="false" />
+          <Property Name="katKod" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="katAd" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="katAltAd" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="katVergi" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personel">
+          <Key>
+            <PropertyRef Name="personelNo" />
+          </Key>
+          <Property Name="personelNo" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="personelAd" Type="nchar" MaxLength="25" Nullable="false" />
+          <Property Name="personelSoyAd" Type="nchar" MaxLength="25" Nullable="false" />
+          <Property Name="personelTC" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="personelSifre" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="personelCinsiyet" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="personelGorev" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="personel_adresID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="urun">
+          <Key>
+            <PropertyRef Name="urunID" />
+          </Key>
+          <Property Name="urunID" Type="int" Nullable="false" />
+          <Property Name="urunBarkod" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="urunAd" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="urun_katKod" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="urunBirim" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="urunStok" Type="smallint" Nullable="false" />
+          <Property Name="urunFiyat" Type="smallmoney" Nullable="false" />
+        </EntityType>
+        <EntityType Name="urunAlis">
+          <Key>
+            <PropertyRef Name="alisID" />
+          </Key>
+          <Property Name="alisID" Type="int" Nullable="false" />
+          <Property Name="firmaVergiNo" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="personelNo" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="urunBarkod" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="alisBirim" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="alisAdet" Type="tinyint" Nullable="false" />
+          <Property Name="alisBirimFiyat" Type="money" Nullable="false" />
+          <Property Name="alisTopTutar" Type="money" Nullable="false" />
+          <Property Name="alisTarih" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="urunSatis">
+          <Key>
+            <PropertyRef Name="satisID" />
+          </Key>
+          <Property Name="satisID" Type="int" Nullable="false" />
+          <Property Name="personelNo" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="urunBarkod" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="satisBirim" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="satisAdet" Type="tinyint" Nullable="false" />
+          <Property Name="satisBirimFiyat" Type="money" Nullable="false" />
+          <Property Name="satisTopTutar" Type="money" Nullable="false" />
+          <Property Name="satisTarih" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_firma_adresID">
+          <End Role="adres" Type="Self.adres" Multiplicity="1" />
+          <End Role="firma" Type="Self.firma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adres">
+              <PropertyRef Name="adresID" />
+            </Principal>
+            <Dependent Role="firma">
+              <PropertyRef Name="firma_adresID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personel_adresID">
+          <End Role="adres" Type="Self.adres" Multiplicity="1" />
+          <End Role="personel" Type="Self.personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adres">
+              <PropertyRef Name="adresID" />
+            </Principal>
+            <Dependent Role="personel">
+              <PropertyRef Name="personel_adresID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_urun_katKod' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_urun_katKod" />-->
+        <EntityContainer Name="covidmarkModelStoreContainer">
+          <EntitySet Name="adres" EntityType="Self.adres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="firma" EntityType="Self.firma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hareket" EntityType="Self.hareket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kategori" EntityType="Self.kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="personel" EntityType="Self.personel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="urun" EntityType="Self.urun" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="urunAlis" EntityType="Self.urunAlis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="urunSatis" EntityType="Self.urunSatis" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_firma_adresID" Association="Self.FK_firma_adresID">
+            <End Role="adres" EntitySet="adres" />
+            <End Role="firma" EntitySet="firma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personel_adresID" Association="Self.FK_personel_adresID">
+            <End Role="adres" EntitySet="adres" />
+            <End Role="personel" EntitySet="personel" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="covidmarkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="adre">
+          <Key>
+            <PropertyRef Name="adresID" />
+          </Key>
+          <Property Name="adresID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="postaKod" Type="Int32" Nullable="false" />
+          <Property Name="il" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ilce" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="firmas" Relationship="Self.FK_firma_adresID" FromRole="adres" ToRole="firma" />
+          <NavigationProperty Name="personels" Relationship="Self.FK_personel_adresID" FromRole="adres" ToRole="personel" />
+        </EntityType>
+        <EntityType Name="firma">
+          <Key>
+            <PropertyRef Name="firmaID" />
+          </Key>
+          <Property Name="firmaID" Type="Int32" Nullable="false" />
+          <Property Name="vergiNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="firmaAd" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="firmaTel" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="firma_adresID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="adre" Relationship="Self.FK_firma_adresID" FromRole="firma" ToRole="adres" />
+        </EntityType>
+        <EntityType Name="hareket">
+          <Key>
+            <PropertyRef Name="hareketID" />
+          </Key>
+          <Property Name="hareketID" Type="Int32" Nullable="false" />
+          <Property Name="hareketBirim" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="gelenAdet" Type="Byte" Nullable="false" />
+          <Property Name="gidenAdet" Type="Byte" Nullable="false" />
+          <Property Name="kalanAdet" Type="Int16" Nullable="false" />
+          <Property Name="hareketTarih" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="kategori">
+          <Key>
+            <PropertyRef Name="katID" />
+          </Key>
+          <Property Name="katID" Type="Int32" Nullable="false" />
+          <Property Name="katKod" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="katAd" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="katAltAd" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="katVergi" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personel">
+          <Key>
+            <PropertyRef Name="personelNo" />
+          </Key>
+          <Property Name="personelNo" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="personelAd" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="personelSoyAd" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="personelTC" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="personelSifre" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="personelCinsiyet" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="personelGorev" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="personel_adresID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="adre" Relationship="Self.FK_personel_adresID" FromRole="personel" ToRole="adres" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="urun">
+          <Key>
+            <PropertyRef Name="urunID" />
+          </Key>
+          <Property Name="urunID" Type="Int32" Nullable="false" />
+          <Property Name="urunBarkod" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="urunAd" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="urun_katKod" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="urunBirim" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="urunStok" Type="Int16" Nullable="false" />
+          <Property Name="urunFiyat" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="urunAli">
+          <Key>
+            <PropertyRef Name="alisID" />
+          </Key>
+          <Property Name="alisID" Type="Int32" Nullable="false" />
+          <Property Name="firmaVergiNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="personelNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="urunBarkod" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="alisBirim" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="alisAdet" Type="Byte" Nullable="false" />
+          <Property Name="alisBirimFiyat" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="alisTopTutar" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="alisTarih" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="urunSati">
+          <Key>
+            <PropertyRef Name="satisID" />
+          </Key>
+          <Property Name="satisID" Type="Int32" Nullable="false" />
+          <Property Name="personelNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="urunBarkod" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="satisBirim" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="satisAdet" Type="Byte" Nullable="false" />
+          <Property Name="satisBirimFiyat" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="satisTopTutar" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="satisTarih" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_firma_adresID">
+          <End Role="adres" Type="Self.adre" Multiplicity="1" />
+          <End Role="firma" Type="Self.firma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adres">
+              <PropertyRef Name="adresID" />
+            </Principal>
+            <Dependent Role="firma">
+              <PropertyRef Name="firma_adresID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personel_adresID">
+          <End Role="adres" Type="Self.adre" Multiplicity="1" />
+          <End Role="personel" Type="Self.personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adres">
+              <PropertyRef Name="adresID" />
+            </Principal>
+            <Dependent Role="personel">
+              <PropertyRef Name="personel_adresID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="covidmarkEntities5" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="adres" EntityType="Self.adre" />
+          <EntitySet Name="firmas" EntityType="Self.firma" />
+          <EntitySet Name="harekets" EntityType="Self.hareket" />
+          <EntitySet Name="kategoris" EntityType="Self.kategori" />
+          <EntitySet Name="personels" EntityType="Self.personel" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="uruns" EntityType="Self.urun" />
+          <EntitySet Name="urunAlis" EntityType="Self.urunAli" />
+          <EntitySet Name="urunSatis" EntityType="Self.urunSati" />
+          <AssociationSet Name="FK_firma_adresID" Association="Self.FK_firma_adresID">
+            <End Role="adres" EntitySet="adres" />
+            <End Role="firma" EntitySet="firmas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personel_adresID" Association="Self.FK_personel_adresID">
+            <End Role="adres" EntitySet="adres" />
+            <End Role="personel" EntitySet="personels" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="covidmarkModelStoreContainer" CdmEntityContainer="covidmarkEntities5">
+          <EntitySetMapping Name="adres">
+            <EntityTypeMapping TypeName="covidmarkModel.adre">
+              <MappingFragment StoreEntitySet="adres">
+                <ScalarProperty Name="adresID" ColumnName="adresID" />
+                <ScalarProperty Name="postaKod" ColumnName="postaKod" />
+                <ScalarProperty Name="il" ColumnName="il" />
+                <ScalarProperty Name="ilce" ColumnName="ilce" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="firmas">
+            <EntityTypeMapping TypeName="covidmarkModel.firma">
+              <MappingFragment StoreEntitySet="firma">
+                <ScalarProperty Name="firmaID" ColumnName="firmaID" />
+                <ScalarProperty Name="vergiNo" ColumnName="vergiNo" />
+                <ScalarProperty Name="firmaAd" ColumnName="firmaAd" />
+                <ScalarProperty Name="firmaTel" ColumnName="firmaTel" />
+                <ScalarProperty Name="firma_adresID" ColumnName="firma_adresID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="harekets">
+            <EntityTypeMapping TypeName="covidmarkModel.hareket">
+              <MappingFragment StoreEntitySet="hareket">
+                <ScalarProperty Name="hareketID" ColumnName="hareketID" />
+                <ScalarProperty Name="hareketBirim" ColumnName="hareketBirim" />
+                <ScalarProperty Name="gelenAdet" ColumnName="gelenAdet" />
+                <ScalarProperty Name="gidenAdet" ColumnName="gidenAdet" />
+                <ScalarProperty Name="kalanAdet" ColumnName="kalanAdet" />
+                <ScalarProperty Name="hareketTarih" ColumnName="hareketTarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kategoris">
+            <EntityTypeMapping TypeName="covidmarkModel.kategori">
+              <MappingFragment StoreEntitySet="kategori">
+                <ScalarProperty Name="katID" ColumnName="katID" />
+                <ScalarProperty Name="katKod" ColumnName="katKod" />
+                <ScalarProperty Name="katAd" ColumnName="katAd" />
+                <ScalarProperty Name="katAltAd" ColumnName="katAltAd" />
+                <ScalarProperty Name="katVergi" ColumnName="katVergi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personels">
+            <EntityTypeMapping TypeName="covidmarkModel.personel">
+              <MappingFragment StoreEntitySet="personel">
+                <ScalarProperty Name="personelNo" ColumnName="personelNo" />
+                <ScalarProperty Name="personelAd" ColumnName="personelAd" />
+                <ScalarProperty Name="personelSoyAd" ColumnName="personelSoyAd" />
+                <ScalarProperty Name="personelTC" ColumnName="personelTC" />
+                <ScalarProperty Name="personelSifre" ColumnName="personelSifre" />
+                <ScalarProperty Name="personelCinsiyet" ColumnName="personelCinsiyet" />
+                <ScalarProperty Name="personelGorev" ColumnName="personelGorev" />
+                <ScalarProperty Name="personel_adresID" ColumnName="personel_adresID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="covidmarkModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="uruns">
+            <EntityTypeMapping TypeName="covidmarkModel.urun">
+              <MappingFragment StoreEntitySet="urun">
+                <ScalarProperty Name="urunID" ColumnName="urunID" />
+                <ScalarProperty Name="urunBarkod" ColumnName="urunBarkod" />
+                <ScalarProperty Name="urunAd" ColumnName="urunAd" />
+                <ScalarProperty Name="urun_katKod" ColumnName="urun_katKod" />
+                <ScalarProperty Name="urunBirim" ColumnName="urunBirim" />
+                <ScalarProperty Name="urunStok" ColumnName="urunStok" />
+                <ScalarProperty Name="urunFiyat" ColumnName="urunFiyat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="urunAlis">
+            <EntityTypeMapping TypeName="covidmarkModel.urunAli">
+              <MappingFragment StoreEntitySet="urunAlis">
+                <ScalarProperty Name="alisID" ColumnName="alisID" />
+                <ScalarProperty Name="firmaVergiNo" ColumnName="firmaVergiNo" />
+                <ScalarProperty Name="personelNo" ColumnName="personelNo" />
+                <ScalarProperty Name="urunBarkod" ColumnName="urunBarkod" />
+                <ScalarProperty Name="alisBirim" ColumnName="alisBirim" />
+                <ScalarProperty Name="alisAdet" ColumnName="alisAdet" />
+                <ScalarProperty Name="alisBirimFiyat" ColumnName="alisBirimFiyat" />
+                <ScalarProperty Name="alisTopTutar" ColumnName="alisTopTutar" />
+                <ScalarProperty Name="alisTarih" ColumnName="alisTarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="urunSatis">
+            <EntityTypeMapping TypeName="covidmarkModel.urunSati">
+              <MappingFragment StoreEntitySet="urunSatis">
+                <ScalarProperty Name="satisID" ColumnName="satisID" />
+                <ScalarProperty Name="personelNo" ColumnName="personelNo" />
+                <ScalarProperty Name="urunBarkod" ColumnName="urunBarkod" />
+                <ScalarProperty Name="satisBirim" ColumnName="satisBirim" />
+                <ScalarProperty Name="satisAdet" ColumnName="satisAdet" />
+                <ScalarProperty Name="satisBirimFiyat" ColumnName="satisBirimFiyat" />
+                <ScalarProperty Name="satisTopTutar" ColumnName="satisTopTutar" />
+                <ScalarProperty Name="satisTarih" ColumnName="satisTarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

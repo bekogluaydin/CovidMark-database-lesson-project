@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4eb92623e6e04639a9960d33a6ccf53d" Name="Diagram1">
+        <EntityTypeShape EntityType="covidmarkModel.adres" Width="1.5" PointX="1.5" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="covidmarkModel.altKategori" Width="1.5" PointX="1.5" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="covidmarkModel.bolge" Width="1.5" PointX="1.5" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="covidmarkModel.fatura" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="covidmarkModel.firma" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="covidmarkModel.hareket" Width="1.5" PointX="8.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="covidmarkModel.ilce" Width="1.5" PointX="1.5" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="covidmarkModel.kategori" Width="1.5" PointX="1.5" PointY="40.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="covidmarkModel.mahalle" Width="1.5" PointX="1.5" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="covidmarkModel.personel" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="covidmarkModel.sehir" Width="1.5" PointX="1.5" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="covidmarkModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="covidmarkModel.ulke" Width="1.5" PointX="1.5" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="covidmarkModel.urun" Width="1.5" PointX="0.75" PointY="33" IsExpanded="true" />
+        <EntityTypeShape EntityType="covidmarkModel.urunAlis" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="covidmarkModel.urunSatis" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="covidmarkModel.FK_adres_mahalleID" ManuallyRouted="false" />
+        <AssociationConnector Association="covidmarkModel.FK_firma_adresID" ManuallyRouted="false" />
+        <AssociationConnector Association="covidmarkModel.FK_personel_adresID" ManuallyRouted="false" />
+        <AssociationConnector Association="covidmarkModel.FK_altKategori_katKod" ManuallyRouted="false" />
+        <AssociationConnector Association="covidmarkModel.FK_urun_altKatID" ManuallyRouted="false" />
+        <AssociationConnector Association="covidmarkModel.FK_bolge_ilceID" ManuallyRouted="false" />
+        <AssociationConnector Association="covidmarkModel.FK_mahalle_bolgeID" ManuallyRouted="false" />
+        <AssociationConnector Association="covidmarkModel.FK_urunAlis_faturaId" ManuallyRouted="false" />
+        <AssociationConnector Association="covidmarkModel.FK_urunSatis_faturaId" ManuallyRouted="false" />
+        <AssociationConnector Association="covidmarkModel.FK_urunAlis_VergiNo" ManuallyRouted="false" />
+        <AssociationConnector Association="covidmarkModel.FK_ilce_sehirID" ManuallyRouted="false" />
+        <AssociationConnector Association="covidmarkModel.FK_urunAlis_personelNo" ManuallyRouted="false" />
+        <AssociationConnector Association="covidmarkModel.FK_urunSatis_personelNo" ManuallyRouted="false" />
+        <AssociationConnector Association="covidmarkModel.FK_sehir_ulkeID" ManuallyRouted="false" />
+        <AssociationConnector Association="covidmarkModel.FK_urunAlis_urunBarkod" ManuallyRouted="false" />
+        <AssociationConnector Association="covidmarkModel.FK_urunSatis_urunBarkod" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2B31D8DB-96DB-4F08-A809-A71CF64073E7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>COVIDMARK_MARKET_OTOMASYONU</RootNamespace>
+    <AssemblyName>COVIDMARK MARKET OTOMASYONU</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="adres.cs">
+      <DependentUpon>covidmark.tt</DependentUpon>
+    </Compile>
+    <Compile Include="altKategori.cs">
+      <DependentUpon>covidmark.tt</DependentUpon>
+    </Compile>
+    <Compile Include="bolge.cs">
+      <DependentUpon>covidmark.tt</DependentUpon>
+    </Compile>
+    <Compile Include="covidmark.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>covidmark.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="covidmark.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>covidmark.tt</DependentUpon>
+    </Compile>
+    <Compile Include="covidmark.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>covidmark.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="covidmarkDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>covidmarkDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CovidMark_AdminMainMenu1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CovidMark_AdminMainMenu1.Designer.cs">
+      <DependentUpon>CovidMark_AdminMainMenu1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CovidMark_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CovidMark_Login.Designer.cs">
+      <DependentUpon>CovidMark_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fatura.cs">
+      <DependentUpon>covidmark.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Faturalar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Faturalar.Designer.cs">
+      <DependentUpon>Faturalar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="firma.cs">
+      <DependentUpon>covidmark.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Firmalar1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Firmalar1.Designer.cs">
+      <DependentUpon>Firmalar1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="hareket.cs">
+      <DependentUpon>covidmark.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ilce.cs">
+      <DependentUpon>covidmark.tt</DependentUpon>
+    </Compile>
+    <Compile Include="kategori.cs">
+      <DependentUpon>covidmark.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Kategoriler1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kategoriler1.Designer.cs">
+      <DependentUpon>Kategoriler1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mahalle.cs">
+      <DependentUpon>covidmark.tt</DependentUpon>
+    </Compile>
+    <Compile Include="personel.cs">
+      <DependentUpon>covidmark.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Personel1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Personel1.Designer.cs">
+      <DependentUpon>Personel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SatisEkran1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SatisEkran1.Designer.cs">
+      <DependentUpon>SatisEkran1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="sehir.cs">
+      <DependentUpon>covidmark.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>covidmark.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>covidmark.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StokHareketi1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StokHareketi1.Designer.cs">
+      <DependentUpon>StokHareketi1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>covidmark.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ulke.cs">
+      <DependentUpon>covidmark.tt</DependentUpon>
+    </Compile>
+    <Compile Include="urun.cs">
+      <DependentUpon>covidmark.tt</DependentUpon>
+    </Compile>
+    <Compile Include="urunAlis.cs">
+      <DependentUpon>covidmark.tt</DependentUpon>
+    </Compile>
+    <Compile Include="urunAlis1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="urunAlis1.Designer.cs">
+      <DependentUpon>urunAlis1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Urunler1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Urunler1.Designer.cs">
+      <DependentUpon>Urunler1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="urunSatis.cs">
+      <DependentUpon>covidmark.tt</DependentUpon>
+    </Compile>
+    <Compile Include="veritabani.cs" />
+    <EmbeddedResource Include="CovidMark_AdminMainMenu1.resx">
+      <DependentUpon>CovidMark_AdminMainMenu1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CovidMark_Login.resx">
+      <DependentUpon>CovidMark_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Faturalar.resx">
+      <DependentUpon>Faturalar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Firmalar1.resx">
+      <DependentUpon>Firmalar1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kategoriler1.resx">
+      <DependentUpon>Kategoriler1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Personel1.resx">
+      <DependentUpon>Personel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SatisEkran1.resx">
+      <DependentUpon>SatisEkran1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StokHareketi1.resx">
+      <DependentUpon>StokHareketi1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="urunAlis1.resx">
+      <DependentUpon>urunAlis1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Urunler1.resx">
+      <DependentUpon>Urunler1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="covidmark.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>covidmark.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="covidmark.edmx.diagram">
+      <DependentUpon>covidmark.edmx</DependentUpon>
+    </None>
+    <None Include="covidmarkDataSet.xsc">
+      <DependentUpon>covidmarkDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="covidmarkDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>covidmarkDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="covidmarkDataSet.xss">
+      <DependentUpon>covidmarkDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CovidMarkLogo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="covidmark.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>covidmark.edmx</DependentUpon>
+      <LastGenOutput>covidmark.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="covidmark.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>covidmark.edmx</DependentUpon>
+      <LastGenOutput>covidmark.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
